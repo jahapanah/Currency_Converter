@@ -9,7 +9,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 public class CurrencyConverterWebController {
 
     @GetMapping("/")
-    public String serveWebPage() {
+    public String serveIndexWebPage() {
         return "index";
     }
+    
+	@GetMapping("/history")
+	public String serveHistoryWebPage() {
+		return "history";
+	}
 }

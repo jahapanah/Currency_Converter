@@ -19,6 +19,10 @@ function getAllCurrencies() {
     xmlRequest.send();
 }
 
+function getHistory() {
+	
+}
+
 function fillCurrencies(dropdown, jsonParsed) {
     for (var i = 0; i < jsonParsed.length; i++) {
         var a = document.createElement("a");
