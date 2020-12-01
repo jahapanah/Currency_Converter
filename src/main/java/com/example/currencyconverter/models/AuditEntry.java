@@ -9,11 +9,9 @@ public class AuditEntry {
 	private String queryString;
 	
 	public AuditEntry() {
-		super();
 	}
 	
 	public AuditEntry(String queryString) {
-		super();
 		this.queryString = queryString;
 	}
 	

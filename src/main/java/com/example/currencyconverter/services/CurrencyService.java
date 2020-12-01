@@ -8,6 +8,7 @@ import com.example.currencyconverter.repositories.CurrencyRepository;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +17,7 @@ import java.util.Optional;
 public class CurrencyService {
 
     private CurrencyRepository currencyRepository;
+    private AuditHistoryService auditHistoryService;
 
     public CurrencyService(CurrencyRepository currencyRepository) {
         this.currencyRepository = currencyRepository;
@@ -43,7 +45,8 @@ public class CurrencyService {
             Double fromValue = from.getValueInEuros();
 
             Double result = toValue * conversionCurrency.getValue() / fromValue;
-
+            String query = "Query:" + "" + from.toString() + "" + to.toString() + "" + result;
+            auditHistoryService.addAuditEntry(query);
             return Optional.of(result);
 
         }
