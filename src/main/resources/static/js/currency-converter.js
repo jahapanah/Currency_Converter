@@ -20,7 +20,13 @@ function getAllCurrencies() {
 }
 
 function getHistory() {
-	
+
+	var history = document.getElementById("audithistory");
+	var xmlRequest = new XMLHttpRequest();
+	xmlRequest.onreadystatechange = function () {
+		if(this.readyState === 4 && this.status === 200) {
+			var jsonParsed = JSON.parse(this.responseText);
+
 }
 
 function fillCurrencies(dropdown, jsonParsed) {

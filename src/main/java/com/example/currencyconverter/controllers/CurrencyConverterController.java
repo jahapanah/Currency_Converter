@@ -39,4 +39,6 @@ public class CurrencyConverterController {
     public ResponseEntity<List<Currency>> getAllCurrencies() {
         return new ResponseEntity<>(this.currencyService.getAllCurrencies(), HttpStatus.OK);
     }
+    
+   
 }
