@@ -39,4 +39,11 @@ public class ConversionCurrency {
     public void setValue(double value) {
         this.value = value;
     }
+
+    public String getAuditString() {
+        StringBuilder auditString = new StringBuilder("Query:::").append(getValue())
+                .append(" ").append(getFrom()).append("=>").append(getTo()).append(" as on ")
+                .append("    Result:::");
+        return auditString.toString();
+    }
 }

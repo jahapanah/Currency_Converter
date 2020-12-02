@@ -1,5 +1,7 @@
 package com.example.currencyconverter.services;
 
+import com.example.currencyconverter.repositories.AuditHistoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.currencyconverter.models.ConversionCurrency;
@@ -17,7 +19,8 @@ import java.util.Optional;
 public class CurrencyService {
 
     private CurrencyRepository currencyRepository;
-    private AuditHistoryService auditHistoryService;
+
+    AuditHistoryService auditHistoryService;
 
     public CurrencyService(CurrencyRepository currencyRepository) {
         this.currencyRepository = currencyRepository;
@@ -45,13 +48,17 @@ public class CurrencyService {
             Double fromValue = from.getValueInEuros();
 
             Double result = toValue * conversionCurrency.getValue() / fromValue;
-            String query = "Query:" + "" + from.toString() + "" + to.toString() + "" + result;
-            auditHistoryService.addAuditEntry(query);
+            performAudit(conversionCurrency);
             return Optional.of(result);
 
         }
 
         return Optional.empty();
+    }
+
+    private void performAudit(ConversionCurrency conversionInfo) {
+        String auditString = conversionInfo.getAuditString();
+        auditHistoryService.addAuditEntry(auditString);
     }
 
 }

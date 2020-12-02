@@ -12,9 +12,4 @@ public class CurrencyConverterWebController {
     public String serveIndexWebPage() {
         return "index";
     }
-    
-	@GetMapping("/history")
-	public String serveHistoryWebPage() {
-		return "history";
-	}
 }

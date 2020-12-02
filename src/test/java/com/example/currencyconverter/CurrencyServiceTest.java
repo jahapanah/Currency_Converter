@@ -1,5 +1,6 @@
 package com.example.currencyconverter;
 
+import com.example.currencyconverter.repositories.AuditHistoryRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

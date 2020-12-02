@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.example.currencyconverter.models.AuditHistory;
@@ -16,10 +16,10 @@ public class AuditHistoryService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(AuditHistoryService.class);
 
-	AuditHistoryRepository auditHistoryRepository;
+	AuditHistoryRepository auditRepository;
 
-	public AuditHistoryService(AuditHistoryRepository auditHistoryRepository) {
-		this.auditHistoryRepository = auditHistoryRepository;
+	public AuditHistoryService(AuditHistoryRepository auditRepository) {
+		this.auditRepository = auditRepository;
 	}
 
 	public void addAuditEntry(String queryString) {
@@ -29,7 +29,7 @@ public class AuditHistoryService {
 	}
 
 	public AuditHistory getAuditHistory(){
-		Optional<Iterable<AuditHistory>> queryHistory = Optional.ofNullable(auditHistoryRepository.findAll());
+		Optional<Iterable<AuditHistory>> queryHistory = Optional.ofNullable(auditRepository.findAll());
 		return (AuditHistory) queryHistory.orElse(createNewQueryHistory());
 	}
 	
@@ -39,7 +39,7 @@ public class AuditHistoryService {
 	}
 
 	private void saveQueryHistory(AuditHistory queryHistory) {
-		auditHistoryRepository.save(queryHistory);
+		auditRepository.save(queryHistory);
 	}
 
 }
