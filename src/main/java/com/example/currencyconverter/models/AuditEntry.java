@@ -8,8 +8,10 @@ import org.springframework.data.redis.core.RedisHash;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+@RedisHash("AuditEntry")
 public class AuditEntry {
 
+	@Id
 	private String queryString;
 	
 	public AuditEntry() {

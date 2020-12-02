@@ -1,6 +1,7 @@
 package com.example.currencyconverter.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,23 +10,10 @@ import java.util.LinkedList;
 
 public class AuditHistory {
 
-	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
-	private String Id;
-
-
 	private LinkedList<AuditEntry> auditEntries;
 	
 	public AuditHistory(){
 		this.auditEntries = new LinkedList<>();
-	}
-
-	public String getId() {
-		return Id;
-	}
-
-	public void setId(String id) {
-		Id = id;
 	}
 
 	public LinkedList<AuditEntry> getAuditEntries() {

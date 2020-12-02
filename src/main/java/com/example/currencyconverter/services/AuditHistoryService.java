@@ -16,7 +16,7 @@ public class AuditHistoryService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(AuditHistoryService.class);
 
-	AuditHistoryRepository auditRepository;
+	private AuditHistoryRepository auditRepository;
 
 	public AuditHistoryService(AuditHistoryRepository auditRepository) {
 		this.auditRepository = auditRepository;

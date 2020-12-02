@@ -20,7 +20,7 @@ public class CurrencyService {
 
     private CurrencyRepository currencyRepository;
 
-    AuditHistoryService auditHistoryService;
+    private AuditHistoryService auditHistoryService;
 
     public CurrencyService(CurrencyRepository currencyRepository) {
         this.currencyRepository = currencyRepository;
