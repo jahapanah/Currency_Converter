@@ -20,7 +20,8 @@ public class CurrencyService {
 
     private CurrencyRepository currencyRepository;
 
-    AuditHistoryService auditHistoryService;
+    @Autowired
+    private AuditHistoryService auditHistoryService;
 
     public CurrencyService(CurrencyRepository currencyRepository) {
         this.currencyRepository = currencyRepository;
@@ -57,8 +58,9 @@ public class CurrencyService {
     }
 
     private void performAudit(ConversionCurrency conversionInfo) {
+    	String user = "admin";
         String auditString = conversionInfo.getAuditString();
-        auditHistoryService.addAuditEntry(auditString);
+        auditHistoryService.addAuditEntry(user, auditString);
     }
 
 }

@@ -22,7 +22,7 @@ public class CurrencyTask {
 
 
     // Runs every 5 hr
-    @Scheduled(fixedRate = 5 * 1000*60*60)
+    @Scheduled(fixedRate = 5 * 1000*60)
     private void getRatesTask() {
         try {
             RestTemplate restTemplate = new RestTemplate();

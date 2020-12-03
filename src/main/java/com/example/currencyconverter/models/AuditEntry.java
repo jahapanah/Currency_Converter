@@ -5,16 +5,14 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
 public class AuditEntry {
 
 	private String queryString;
 	
 	public AuditEntry() {
+		super();
 	}
-
+	
 	public AuditEntry(String queryString) {
 		this.queryString = queryString;
 	}
