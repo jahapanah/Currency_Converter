@@ -1,22 +1,17 @@
 package com.example.currencyconverter.models;
 
-import java.util.Date;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 
-@RedisHash("AuditEntry")
 public class AuditEntry {
 
-	@Id
 	private String queryString;
 	
 	public AuditEntry() {
+		super();
 	}
-
+	
 	public AuditEntry(String queryString) {
 		this.queryString = queryString;
 	}

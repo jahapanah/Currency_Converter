@@ -1,6 +1,9 @@
 package com.example.currencyconverter.controllers;
 
 import com.example.currencyconverter.services.AuditHistoryService;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +24,9 @@ public class CurrencyConverterHistoryController {
 	}
 	
 	@RequestMapping(value = "/history", method = RequestMethod.GET)
-	 public ResponseEntity<AuditHistory> getAuditHistory(){
-		 return new ResponseEntity<>(this.auditHistoryService.getAuditHistory(), HttpStatus.OK);
+	 public ResponseEntity<Optional<Optional<AuditHistory>>> getAuditHistory(){
+		String user = "admin";
+		 return new ResponseEntity<>(this.auditHistoryService.getAuditHistory(user), HttpStatus.OK);
 		
 	}
 }

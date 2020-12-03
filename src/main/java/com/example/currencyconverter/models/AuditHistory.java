@@ -3,18 +3,29 @@ package com.example.currencyconverter.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import java.util.LinkedList;
 
-
+@RedisHash("AuditHistory")
 public class AuditHistory {
+
+	@Id
+	String user;
 
 	private LinkedList<AuditEntry> auditEntries;
 	
-	public AuditHistory(){
+	public AuditHistory(String user){
+		this.user = user;
 		this.auditEntries = new LinkedList<>();
 	}
+	
+	public String getUser() {
+		return user;
+	}
+
+	public void setUsername(String user) {
+		this.user = user;
+	}
+
 
 	public LinkedList<AuditEntry> getAuditEntries() {
 		return auditEntries;
@@ -23,6 +34,7 @@ public class AuditHistory {
 	public void setAuditEntries(LinkedList<AuditEntry> auditEntries) {
 		this.auditEntries = auditEntries;
 	}
+	
 	
 	public void addNewAuditEntry(String queryString) {
 		AuditEntry newEntry = createNewAuditEntry(queryString);
