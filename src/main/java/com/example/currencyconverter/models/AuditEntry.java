@@ -1,9 +1,8 @@
 package com.example.currencyconverter.models;
 
-import java.util.Date;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+
 
 public class AuditEntry {
 

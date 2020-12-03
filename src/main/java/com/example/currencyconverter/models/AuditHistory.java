@@ -10,7 +10,7 @@ public class AuditHistory {
 
 	@Id
 	String user;
-	
+
 	private LinkedList<AuditEntry> auditEntries;
 	
 	public AuditHistory(String user){
@@ -25,6 +25,7 @@ public class AuditHistory {
 	public void setUsername(String user) {
 		this.user = user;
 	}
+
 
 	public LinkedList<AuditEntry> getAuditEntries() {
 		return auditEntries;
