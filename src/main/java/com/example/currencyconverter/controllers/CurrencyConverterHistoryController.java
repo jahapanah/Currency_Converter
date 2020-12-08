@@ -24,7 +24,7 @@ public class CurrencyConverterHistoryController {
 	}
 	
 	@RequestMapping(value = "/history", method = RequestMethod.GET)
-	 public ResponseEntity<Optional<Optional<AuditHistory>>> getAuditHistory(){
+	 public ResponseEntity<AuditHistory> getAuditHistory(){
 		String user = "admin";
 		 return new ResponseEntity<>(this.auditHistoryService.getAuditHistory(user), HttpStatus.OK);
 		

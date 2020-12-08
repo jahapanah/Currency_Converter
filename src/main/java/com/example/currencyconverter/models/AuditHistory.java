@@ -2,8 +2,9 @@ package com.example.currencyconverter.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
-
+import org.springframework.stereotype.Component;
 import java.util.LinkedList;
+import java.util.Optional;
 
 @RedisHash("AuditHistory")
 public class AuditHistory {
@@ -43,17 +44,9 @@ public class AuditHistory {
 
 		this.auditEntries.addFirst(newEntry);
 	}
-	
+
 	private AuditEntry createNewAuditEntry(String queryString) {
 		return new AuditEntry(queryString);
 	}
 	
-	public String getFormattedString() {
-		StringBuilder formatted = new StringBuilder();
-		getAuditEntries().stream()
-				.forEach((p) -> formatted.append(p.getQueryString())
-						.append("\n"));
-		return formatted.toString();
-
-	}
 }

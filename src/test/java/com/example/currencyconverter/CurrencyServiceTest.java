@@ -7,11 +7,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import com.example.currencyconverter.models.ConversionCurrency;
 import com.example.currencyconverter.models.Currency;
 import com.example.currencyconverter.repositories.CurrencyRepository;
+import com.example.currencyconverter.services.AuditHistoryService;
 import com.example.currencyconverter.services.CurrencyService;
 
 import java.util.Arrays;
@@ -25,6 +27,14 @@ public class CurrencyServiceTest {
     private CurrencyRepository repository;
 
     private CurrencyService subject;
+    
+    @Mock
+    private AuditHistoryService auditHistoryService;
+    
+    @Before
+    public void initMocks(){
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Before
     public void setup() {
@@ -52,8 +62,7 @@ public class CurrencyServiceTest {
         Mockito.when(repository.findAll()).thenReturn(Arrays.asList(currencyZMW, currencyEUR, currencyUSD, currencyAED));
 
         List<Currency> currencies = subject.getAllCurrencies();
-        Assert.assertTrue(!currencies.isEmpty());
-        // Test if they are sorted
+//        Assert.assertTrue(!currencies.isEmpty());
         Assert.assertEquals(currencies.get(0), currencyAED);
         Assert.assertEquals(currencies.get(1), currencyEUR);
         Assert.assertEquals(currencies.get(2), currencyUSD);

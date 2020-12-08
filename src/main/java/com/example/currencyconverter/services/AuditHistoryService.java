@@ -27,19 +27,18 @@ public class AuditHistoryService {
 	}
 
 	public void addAuditEntry(String user, String queryString) {
-		AuditHistory queryHistory = new AuditHistory(user);
+		AuditHistory queryHistory = getAuditHistory(user);
 		queryHistory.addNewAuditEntry(queryString);
 		saveQueryHistory(queryHistory);
 	}
 
-	public Optional<Optional<AuditHistory>> getAuditHistory(String user){
-		Optional<Optional<AuditHistory>> queryHistory = Optional.ofNullable(auditRepository.findById(user));
-		return queryHistory;
+	public AuditHistory getAuditHistory(String user){
+		Optional<AuditHistory> queryHistory = auditRepository.findById(user);
+		return queryHistory.orElse(createNewQueryHistory(user));
 	}
 	
-	private Iterable<AuditHistory> createNewQueryHistory() {
-		Iterable<AuditHistory> iterable = (Iterable<AuditHistory>) new AuditHistory(null);
-		return iterable;
+	private AuditHistory createNewQueryHistory(String user) {
+		return new AuditHistory(user);
 	}
 
 	private void saveQueryHistory(AuditHistory queryHistory) {
