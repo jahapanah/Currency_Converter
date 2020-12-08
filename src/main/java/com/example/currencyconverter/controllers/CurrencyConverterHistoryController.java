@@ -18,15 +18,15 @@ public class CurrencyConverterHistoryController {
 
 	@Autowired
 	AuditHistoryService auditHistoryService;
-	
-	public CurrencyConverterHistoryController(AuditHistoryService auditHistoryService){
+
+	public CurrencyConverterHistoryController(AuditHistoryService auditHistoryService) {
 		this.auditHistoryService = auditHistoryService;
 	}
-	
+
 	@RequestMapping(value = "/history", method = RequestMethod.GET)
-	 public ResponseEntity<AuditHistory> getAuditHistory(){
+	public ResponseEntity<AuditHistory> getAuditHistory() {
 		String user = "admin";
-		 return new ResponseEntity<>(this.auditHistoryService.getAuditHistory(user), HttpStatus.OK);
-		
+		return new ResponseEntity<>(this.auditHistoryService.getAuditHistory(user), HttpStatus.OK);
+
 	}
 }

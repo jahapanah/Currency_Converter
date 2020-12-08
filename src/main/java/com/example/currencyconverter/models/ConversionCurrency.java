@@ -40,10 +40,10 @@ public class ConversionCurrency {
         this.value = value;
     }
 
-    public String getAuditString() {
+    public String getAuditString(Double result) {
         StringBuilder auditString = new StringBuilder("Query:::").append(getValue())
-                .append(" ").append(getFrom()).append("=>").append(getTo()).append(" as on ")
-                .append("    Result:::");
+                .append(" ").append(getFrom()).append("=>").append(getTo())
+                .append("    Result:::").append(result);
         return auditString.toString();
     }
 }

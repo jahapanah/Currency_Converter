@@ -49,7 +49,7 @@ public class CurrencyService {
             Double fromValue = from.getValueInEuros();
 
             Double result = toValue * conversionCurrency.getValue() / fromValue;
-            performAudit(conversionCurrency);
+            performAudit(conversionCurrency, result);
             return Optional.of(result);
 
         }
@@ -57,9 +57,9 @@ public class CurrencyService {
         return Optional.empty();
     }
 
-    private void performAudit(ConversionCurrency conversionInfo) {
+    private void performAudit(ConversionCurrency conversionInfo, Double result ) {
     	String user = "admin";
-        String auditString = conversionInfo.getAuditString();
+        String auditString = conversionInfo.getAuditString(result);
         auditHistoryService.addAuditEntry(user, auditString);
     }
 
