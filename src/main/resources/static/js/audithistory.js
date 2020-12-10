@@ -1,21 +1,20 @@
 
-var xmlRequest = new XMLHttpRequest();
-var items
-xmlRequest.onreadystatechange = function () {
-    if (this.readyState === 4 && this.status === 200) {
-        items = JSON.parse(this.responseText);
+function getAuditHistory() {
+    var historyTable = document.getElementById("myTable");
+    var xmlRequest = new XMLHttpRequest();
+
+    xmlRequest.onreadystatechange = function () {
+        if(this.readyState === 4 && this.status === 200) {
+            var jsonParsed = JSON.parse(this.responseText);
+            fillTable(historyTable,jsonParsed)
+        }
+    };
+    xmlRequest.open("GET", "/history", true);
+    xmlRequest.send();
+}
+
+function fillTable(table, jsonParsed) {
+    for (var i = 0; i < jsonParsed[1].length; i++) {
+    	JSON.stringify(jsonParsed[1][i]) + "<br>"
     }
 }
-
-function getAuditHistory() {
-    const table = document.getElementById("history");
-    items.forEach(item => {
-        let row = table.insertRow();
-        let date = row.insertCell(0);
-        date.innerHTML = item.date;
-        let name = row.insertCell(1);
-        name.innerHTML = item.name;
-    });
-}
-
-getAuditHistory();
