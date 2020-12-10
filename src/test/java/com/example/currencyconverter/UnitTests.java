@@ -93,7 +93,7 @@ public class UnitTests {
         Assert.assertFalse(result.isPresent());
     }
     
-    //Unit tests added for AuditHistory
+    //Unit tests added for AuditHistory functionality
     
     @Test
     public void getAuditHistoryReturnHistory(){
