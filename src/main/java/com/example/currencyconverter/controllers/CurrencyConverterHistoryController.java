@@ -23,7 +23,7 @@ public class CurrencyConverterHistoryController {
 		this.auditHistoryService = auditHistoryService;
 	}
 
-	@RequestMapping(value = "/history", produces = { "application/json" }, method = RequestMethod.GET)
+	@RequestMapping(value = "/history",  produces = { "application/json" }, method = RequestMethod.GET)
 	public ResponseEntity<AuditHistory> getAuditHistory() {
 		String user = "admin";
 		return new ResponseEntity<>(this.auditHistoryService.getAuditHistory(user), HttpStatus.OK);
