@@ -29,7 +29,7 @@ public class CurrencyTask {
 
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 	
-    // Runs every 5 hr
+    // Runs every 15 min
     @Scheduled(fixedRate = 5 * 1000*60*3)
     private void getRatesTask() {
     	log.info("The time is now {}", dateFormat.format(new Date()));

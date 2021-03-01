@@ -37,7 +37,6 @@ public class IntegrationTest {
         restTemplate = new RestTemplate();
     }
 
-
     @Test
     public void convertShouldBeSuccessful() {
         Currency currencyEUR = new Currency("EUR", 1);
