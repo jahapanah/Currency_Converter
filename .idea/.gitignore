@@ -1,0 +1,26 @@
+# Default ignored files
+/shelf/
+.idea/
+*.iml
+user.properties
+config.properties
+target/
+.ignore
+*.jar
+*.war
+cirrus-features-override.properties
+/.mvn/last-build.log
+dump.rdb
+.mvn/.gradle-enterprise/gradle-enterprise-workspace-id
+
+# ------------- #
+# Mac specific  #
+# ------------- #
+.DS_Store
+overlays/
+
+all.log
+
+local-docker.properties
+
+install.log
